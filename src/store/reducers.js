@@ -1,16 +1,8 @@
-import { ACTION_CHANGE_FIRST_NAME, ACTION_CHANGE_SECOND_NAME } from '../index';
+import { combineReducers } from "redux";
+import { authReducer } from './auth/reducers';
+import { registrationReducer } from './registration/reducers';
 
-const initialState = {
-    firstName: 'Oleg',
-    secondName: 'Pavlov'
-};
-
-export const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ACTION_CHANGE_FIRST_NAME:
-            return {...state, firstName: action.payload };
-        case ACTION_CHANGE_SECOND_NAME:
-            return {...state, secondName: action.payload };
-    }
-    return state;
-};
+export default combineReducers({
+    auth: authReducer,
+    registration: registrationReducer
+});
